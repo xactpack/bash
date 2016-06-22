@@ -18,9 +18,9 @@ class bash(object):
         self.stdout = None
         self.bash(*args, **kwargs)
 
-    def bash(self, cmd, env=None, stdout=PIPE, stderr=PIPE, timeout=None, sync=True):
+    def bash(self, cmd, env=None, stdout=PIPE, stderr=PIPE, timeout=None, sync=True, executable='/bin/bash'):
         self.p = Popen(
-            cmd, shell=True, stdout=stdout, stdin=PIPE, stderr=stderr, env=env
+            cmd, shell=True, stdout=stdout, stdin=PIPE, stderr=stderr, env=env, executable=executable
         )
         if sync:
             self.sync(timeout)
